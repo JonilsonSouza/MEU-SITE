@@ -1,0 +1,39 @@
+export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+  try {
+    const { messages } = req.body;
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: `Você é o JS Vendas, assistente virtual da JS Tênis — loja premium de tênis originais em Goiânia e Aparecida de Goiânia (GO). Você é especialista em vendas, promoções e atendimento rápido.
+
+Produtos: Nike, Adidas, Puma, New Balance — todos 100% originais.
+Diferenciais: entrega local rápida, promoções exclusivas, atendimento personalizado.
+
+Seja simpático, direto e focado em converter o cliente. Use linguagem descontraída mas profissional. Quando relevante, direcione para o WhatsApp ou site para fechar a compra. Nunca invente preços ou modelos específicos sem o cliente informar.`,
+        messages
+      })
+    });
+
+    const data = await response.json();
+    const reply = data.content?.[0]?.text || 'Desculpe, não consegui responder agora.';
+    res.status(200).json({ reply });
+
+  } catch (error) {
+    res.status(500).json({ error: 'Erro interno do servidor' });
+  }
+}
