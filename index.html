@@ -1302,7 +1302,7 @@
 
 </head>
 <!-- ================================================
-     JS VENDAS — Chat Flutuante com IA
+     JS VENDAS — Chat Flutuante
      Cole este bloco inteiro antes de </body> no seu index.html
      ================================================ -->
 
@@ -1341,7 +1341,6 @@
     opacity: 1;
     pointer-events: all;
   }
-
   #jsvenda-header {
     background: #1a1a1a;
     padding: 14px 16px;
@@ -1355,12 +1354,12 @@
     font-weight: 700; font-size: 13px; color: #1a1a1a;
     flex-shrink: 0;
   }
-  #jsvenda-header .jsv-info .jsv-name { font-weight: 600; font-size: 14px; color: #C9A84C; }
-  #jsvenda-header .jsv-info .jsv-status {
+  #jsvenda-header .jsv-name { font-weight: 600; font-size: 14px; color: #C9A84C; }
+  #jsvenda-header .jsv-status {
     font-size: 11px; color: #888;
     display: flex; align-items: center; gap: 4px;
   }
-  #jsvenda-header .jsv-info .jsv-status::before {
+  #jsvenda-header .jsv-status::before {
     content: ''; width: 6px; height: 6px;
     background: #4CAF50; border-radius: 50%; display: inline-block;
   }
@@ -1369,38 +1368,26 @@
     color: #666; font-size: 18px; line-height: 1; padding: 4px;
   }
   #jsvenda-close:hover { color: #C9A84C; }
-
   #jsvenda-messages {
     flex: 1; overflow-y: auto; padding: 16px;
     display: flex; flex-direction: column; gap: 10px;
     min-height: 260px; max-height: 320px;
   }
   #jsvenda-messages::-webkit-scrollbar { width: 4px; }
-  #jsvenda-messages::-webkit-scrollbar-track { background: transparent; }
   #jsvenda-messages::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-
   .jsv-msg { max-width: 85%; line-height: 1.5; font-size: 13px; }
   .jsv-msg.bot {
-    align-self: flex-start;
-    background: #2a2a2a;
-    color: #e0e0e0;
-    padding: 8px 12px;
-    border-radius: 4px 12px 12px 12px;
+    align-self: flex-start; background: #2a2a2a; color: #e0e0e0;
+    padding: 8px 12px; border-radius: 4px 12px 12px 12px;
     border-left: 2px solid #C9A84C;
   }
   .jsv-msg.user {
-    align-self: flex-end;
-    background: #C9A84C;
-    color: #1a1a1a;
-    padding: 8px 12px;
-    border-radius: 12px 12px 4px 12px;
-    font-weight: 500;
+    align-self: flex-end; background: #C9A84C; color: #1a1a1a;
+    padding: 8px 12px; border-radius: 12px 12px 4px 12px; font-weight: 500;
   }
   .jsv-msg.typing {
-    align-self: flex-start;
-    background: #2a2a2a;
-    padding: 10px 14px;
-    border-radius: 4px 12px 12px 12px;
+    align-self: flex-start; background: #2a2a2a;
+    padding: 10px 14px; border-radius: 4px 12px 12px 12px;
     border-left: 2px solid rgba(201,168,76,0.3);
   }
   .jsv-dots { display: flex; gap: 4px; align-items: center; }
@@ -1414,19 +1401,15 @@
     0%, 60%, 100% { transform: translateY(0); }
     30% { transform: translateY(-6px); }
   }
-
   #jsvenda-input-area {
-    padding: 12px;
-    border-top: 1px solid #2a2a2a;
-    display: flex; gap: 8px;
-    background: #111;
+    padding: 12px; border-top: 1px solid #2a2a2a;
+    display: flex; gap: 8px; background: #111;
   }
   #jsvenda-input {
     flex: 1; background: #222; border: 1px solid #333;
     color: #e0e0e0; border-radius: 8px;
     padding: 8px 12px; font-size: 13px;
-    outline: none; resize: none;
-    font-family: inherit;
+    outline: none; resize: none; font-family: inherit;
   }
   #jsvenda-input:focus { border-color: rgba(201,168,76,0.5); }
   #jsvenda-input::placeholder { color: #555; }
@@ -1434,30 +1417,25 @@
     width: 36px; height: 36px; border-radius: 8px;
     background: #C9A84C; border: none; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; align-self: flex-end;
-    transition: background 0.15s;
+    flex-shrink: 0; align-self: flex-end; transition: background 0.15s;
   }
   #jsvenda-send:hover { background: #d4b05a; }
   #jsvenda-send:disabled { background: #333; cursor: not-allowed; }
   #jsvenda-send svg { width: 16px; height: 16px; fill: #1a1a1a; }
-
   #jsvenda-footer {
     font-size: 10px; color: #444; text-align: center;
-    padding: 5px 12px 8px;
-    background: #111;
+    padding: 5px 12px 8px; background: #111;
   }
 </style>
 
-<!-- Botão flutuante -->
 <div id="jsvenda-bubble" title="Fale com JS Vendas">
   <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
 </div>
 
-<!-- Janela do chat -->
 <div id="jsvenda-window">
   <div id="jsvenda-header">
     <div class="jsv-avatar">JS</div>
-    <div class="jsv-info">
+    <div>
       <div class="jsv-name">JS Vendas</div>
       <div class="jsv-status">Online agora</div>
     </div>
@@ -1475,22 +1453,15 @@
 
 <script>
 (function() {
-  const bubble = document.getElementById('jsvenda-bubble');
-  const win    = document.getElementById('jsvenda-window');
-  const closeBtn = document.getElementById('jsvenda-close');
-  const msgs   = document.getElementById('jsvenda-messages');
-  const input  = document.getElementById('jsvenda-input');
+  const bubble  = document.getElementById('jsvenda-bubble');
+  const win     = document.getElementById('jsvenda-window');
+  const closeBtn= document.getElementById('jsvenda-close');
+  const msgs    = document.getElementById('jsvenda-messages');
+  const input   = document.getElementById('jsvenda-input');
   const sendBtn = document.getElementById('jsvenda-send');
 
   let history = [];
   let isOpen = false;
-
-  const SYSTEM = `Você é o JS Vendas, assistente virtual da JS Tênis — loja premium de tênis originais em Goiânia e Aparecida de Goiânia (GO). Você é especialista em vendas, promoções e atendimento rápido.
-
-Produtos: Nike, Adidas, Puma, New Balance — todos 100% originais.
-Diferenciais: entrega local rápida, promoções exclusivas, atendimento personalizado.
-
-Seja simpático, direto e focado em converter o cliente. Use linguagem descontraída mas profissional. Quando relevante, direcione para o WhatsApp ou site para fechar a compra. Nunca invente preços ou modelos específicos sem o cliente informar.`;
 
   function addMsg(text, role) {
     const div = document.createElement('div');
@@ -1498,7 +1469,6 @@ Seja simpático, direto e focado em converter o cliente. Use linguagem descontra
     div.textContent = text;
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
-    return div;
   }
 
   function addTyping() {
@@ -1527,19 +1497,14 @@ Seja simpático, direto e focado em converter o cliente. Use linguagem descontra
     addTyping();
 
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          system: SYSTEM,
-          messages: history
-        })
+        body: JSON.stringify({ messages: history })
       });
       const data = await res.json();
       removeTyping();
-      const reply = data.content?.[0]?.text || 'Desculpe, não consegui responder agora. Tente novamente!';
+      const reply = data.reply || 'Desculpe, não consegui responder agora.';
       addMsg(reply, 'bot');
       history.push({ role: 'assistant', content: reply });
     } catch (e) {
@@ -1568,11 +1533,9 @@ Seja simpático, direto e focado em converter o cliente. Use linguagem descontra
   });
 
   sendBtn.addEventListener('click', sendMessage);
-
   input.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
   });
-
   input.addEventListener('input', function() {
     input.style.height = 'auto';
     input.style.height = Math.min(input.scrollHeight, 80) + 'px';
