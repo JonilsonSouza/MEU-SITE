@@ -2,447 +2,242 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="theme-color" content="#0f0f0f">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#060a0f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Carteira · Jonilson</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="apple-mobile-web-app-title" content="JonilsonTrader">
+<title>JonilsonTrader · Carteira Inter</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0f0f0f;
-    --bg2: #181818;
-    --bg3: #222222;
-    --border: #2a2a2a;
-    --text: #f0ede8;
-    --text2: #888;
-    --text3: #555;
-    --orange: #E8722A;
-    --green: #2ecc8a;
-    --red: #e05555;
-    --blue: #4a9eff;
-    --purple: #9b87f5;
-    --radius: 14px;
-    --font: 'DM Sans', sans-serif;
-    --mono: 'DM Mono', monospace;
-  }
-  html, body { background: var(--bg); color: var(--text); font-family: var(--font); min-height: 100vh; }
-  body { padding: 0 0 80px; max-width: 480px; margin: 0 auto; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg0:#060a0f;--bg1:#0b1017;--bg2:#101820;--bg3:#162030;
+  --border:#1e2d3d;--border2:#243547;
+  --text:#e8f0fe;--text2:#7b8fa8;--text3:#3d5166;
+  --green:#00d68f;--green2:#00d68f22;
+  --red:#ff4d6d;--red2:#ff4d6d22;
+  --blue:#4a9eff;--blue2:#4a9eff18;
+  --orange:#f59e0b;--orange2:#f59e0b18;
+  --purple:#8b5cf6;--purple2:#8b5cf618;
+  --cyan:#06d6f0;
+  --font:'Space Grotesk',sans-serif;--mono:'Space Mono',monospace;--r:10px;
+}
+html{background:var(--bg0);color:var(--text);font-family:var(--font);font-size:14px}
+body{min-height:100vh;max-width:480px;margin:0 auto;padding-bottom:80px;overflow-x:hidden}
 
-  /* HEADER */
-  .header {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(15,15,15,0.92);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 16px 20px 14px;
-    border-bottom: 1px solid var(--border);
-  }
-  .header-top { display: flex; justify-content: space-between; align-items: center; }
-  .header-title { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
-  .header-sub { font-size: 11px; color: var(--text3); margin-top: 2px; font-family: var(--mono); }
-  .live-badge {
-    display: flex; align-items: center; gap: 5px;
-    font-size: 10px; font-weight: 500;
-    padding: 4px 10px; border-radius: 20px;
-    background: #2ecc8a18; color: var(--green);
-    border: 1px solid #2ecc8a33;
-  }
-  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: blink 2s infinite; }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+/* TICKER */
+.ticker-wrap{background:var(--bg1);border-bottom:1px solid var(--border);overflow:hidden;height:30px;display:flex;align-items:center}
+.ticker-track{display:flex;white-space:nowrap;animation:ticker 35s linear infinite}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tick-item{padding:0 16px;font-size:10px;font-family:var(--mono);display:flex;align-items:center;gap:6px;border-right:1px solid var(--border)}
+.tick-name{color:var(--text2)}.tick-price{color:var(--text);font-weight:700}
+.tick-chg.pos{color:var(--green)}.tick-chg.neg{color:var(--red)}
 
-  /* BODY */
-  .body { padding: 0 16px; }
+/* HEADER */
+.hdr{background:rgba(6,10,15,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:12px 16px 10px;position:sticky;top:0;z-index:100}
+.hdr-top{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:8px}
+.brand-logo{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#1a56db,#06d6f0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;box-shadow:0 0 12px #1a56db55}
+.brand-name{font-size:15px;font-weight:700;letter-spacing:-.3px}
+.brand-sub{font-size:9px;color:var(--text3);font-family:var(--mono);letter-spacing:.08em;margin-top:1px}
+.live-pill{display:flex;align-items:center;gap:5px;font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-family:var(--mono);padding:4px 10px;border-radius:6px;background:var(--green2);color:var(--green);border:1px solid #00d68f33}
+.live-dot{width:5px;height:5px;border-radius:50%;background:currentColor;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 4px currentColor}50%{opacity:.2;box-shadow:none}}
 
-  /* SUMMARY CARDS */
-  .summary { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
-  .scard {
-    background: var(--bg2); border-radius: var(--radius); padding: 14px 16px;
-    border: 1px solid var(--border);
-    transition: transform .15s;
-  }
-  .scard:active { transform: scale(.97); }
-  .scard-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
-  .scard-val { font-size: 20px; font-weight: 600; letter-spacing: -0.5px; font-family: var(--mono); color: var(--text); }
-  .scard-val.big { font-size: 22px; }
-  .scard-sub { font-size: 11px; margin-top: 4px; font-family: var(--mono); }
-  .pos { color: var(--green); }
-  .neg { color: var(--red); }
-  .neu { color: var(--text2); }
+/* BODY */
+.body{padding:0 12px}
 
-  /* CHART AREA */
-  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-  .ccard {
-    background: var(--bg2); border-radius: var(--radius); padding: 14px;
-    border: 1px solid var(--border);
-  }
-  .ccard-title { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
-  .cwrap { position: relative; height: 130px; }
-  .leg { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-  .li { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text2); }
-  .ld { width: 7px; height: 7px; border-radius: 2px; }
+/* HERO */
+.hero{margin:14px 0 12px;background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--border2);border-radius:14px;padding:18px 20px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,#1a56db18,transparent 70%)}
+.hero-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;font-family:var(--mono);margin-bottom:6px}
+.hero-val{font-size:34px;font-weight:700;letter-spacing:-1px;font-family:var(--mono);display:flex;align-items:baseline;gap:4px}
+.hero-val .hero-currency{font-size:18px;color:var(--text2);font-weight:500}
+.hero-row{display:flex;align-items:center;gap:10px;margin-top:8px}
+.hero-pct{font-size:12px;padding:3px 8px;border-radius:6px;font-family:var(--mono);font-weight:700}
+.hero-pct.pos{background:var(--green2);color:var(--green);border:1px solid #00d68f33}
+.hero-pct.neg{background:var(--red2);color:var(--red);border:1px solid #ff4d6d33}
+.hero-sub{font-size:11px;color:var(--text3);font-family:var(--mono)}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:10px;overflow:hidden;margin-top:14px}
+.hstat{background:var(--bg2);padding:10px 12px;text-align:center}
+.hstat-l{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--mono)}
+.hstat-v{font-size:13px;font-weight:600;font-family:var(--mono)}
 
-  /* SECTION */
-  .sec-hdr {
-    font-size: 10px; font-weight: 600; color: var(--text3);
-    text-transform: uppercase; letter-spacing: .08em;
-    display: flex; align-items: center; gap: 8px;
-    margin: 20px 0 10px;
-  }
-  .sec-hdr::after { content:''; flex:1; height:1px; background: var(--border); }
+/* MINI CARDS */
+.mini-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.mc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;position:relative;overflow:hidden}
+.mc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px}
+.mc.green::after{background:linear-gradient(90deg,var(--green),transparent)}
+.mc.red::after{background:linear-gradient(90deg,var(--red),transparent)}
+.mc.blue::after{background:linear-gradient(90deg,var(--blue),transparent)}
+.mc.purple::after{background:linear-gradient(90deg,var(--purple),transparent)}
+.mc-label{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-family:var(--mono);margin-bottom:6px}
+.mc-val{font-size:17px;font-weight:700;font-family:var(--mono);letter-spacing:-.5px}
+.mc-sub{font-size:10px;margin-top:3px;font-family:var(--mono)}
+.pos{color:var(--green)}.neg{color:var(--red)}.neu{color:var(--text2)}
 
-  /* ASSET CARDS */
-  .acard {
-    background: var(--bg2); border-radius: var(--radius);
-    border: 1px solid var(--border); margin-bottom: 8px; overflow: hidden;
-  }
-  .acard-main { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; cursor: pointer; }
-  .acard-left { display: flex; align-items: center; gap: 10px; }
-  .aicon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
-  .acard-name { font-size: 14px; font-weight: 600; }
-  .acard-qtd { font-size: 10px; color: var(--text2); font-family: var(--mono); margin-top: 2px; }
-  .acard-right { text-align: right; }
-  .acard-saldo { font-size: 14px; font-weight: 600; font-family: var(--mono); }
-  .acard-rend { font-size: 11px; margin-top: 2px; font-family: var(--mono); }
-  .acard-detail {
-    display: none; background: var(--bg3);
-    border-top: 1px solid var(--border); padding: 12px 16px;
-    font-size: 12px;
-  }
-  .acard-detail.open { display: block; }
-  .detail-row { display: flex; justify-content: space-between; padding: 4px 0; }
-  .detail-row span:first-child { color: var(--text2); }
-  .detail-row span:last-child { font-family: var(--mono); font-weight: 500; }
-  .change-badge {
-    font-size: 10px; padding: 2px 6px; border-radius: 6px;
-    font-family: var(--mono); font-weight: 500;
-    display: inline-flex; align-items: center; gap: 2px;
-  }
-  .change-pos { background: #2ecc8a18; color: var(--green); }
-  .change-neg { background: #e0555518; color: var(--red); }
-  .pill { font-size: 9px; padding: 2px 6px; border-radius: 6px; font-weight: 600; letter-spacing: .04em; }
-  .p-fii { background: #4a9eff18; color: var(--blue); border: 1px solid #4a9eff33; }
-  .p-etf { background: #f5a62318; color: #f5a623; border: 1px solid #f5a62333; }
+/* CHARTS */
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.cbox{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:12px}
+.cbox-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.cbox-title{font-size:9px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-family:var(--mono)}
+.cbox-badge{font-size:8px;padding:2px 6px;border-radius:4px;font-family:var(--mono)}
+.cwrap{position:relative;height:120px}
+.leg{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.li{display:flex;align-items:center;gap:3px;font-size:9px;color:var(--text2);font-family:var(--mono)}
+.ld{width:6px;height:6px;border-radius:2px}
 
-  /* BOTTOM BAR */
-  .bottom {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    max-width: 480px; margin: 0 auto;
-    background: rgba(15,15,15,0.95);
-    backdrop-filter: blur(20px);
-    border-top: 1px solid var(--border);
-    padding: 10px 20px 20px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .upd-txt { font-size: 10px; color: var(--text3); font-family: var(--mono); }
-  .refresh-btn {
-    font-size: 12px; font-weight: 500; font-family: var(--font);
-    background: var(--orange); color: #fff;
-    border: none; border-radius: 10px;
-    padding: 8px 16px; cursor: pointer;
-    display: flex; align-items: center; gap: 5px;
-    transition: opacity .15s, transform .1s;
-  }
-  .refresh-btn:active { opacity: .8; transform: scale(.96); }
-  .refresh-btn:disabled { opacity: .5; }
+/* SECTION */
+.sec{margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.sec-tag{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-family:var(--mono);padding:3px 8px;border-radius:5px}
+.sec-tag.cripto{background:var(--purple2);color:var(--purple);border:1px solid #8b5cf633}
+.sec-tag.rv{background:var(--blue2);color:var(--blue);border:1px solid #4a9eff33}
+.sec-line{flex:1;height:1px;background:var(--border)}
+.sec-count{font-size:9px;color:var(--text3);font-family:var(--mono)}
 
-  /* ERR */
-  .err { background: #e0555518; border: 1px solid #e0555533; border-radius: 10px; padding: 8px 12px; font-size: 11px; color: var(--red); margin-bottom: 12px; display: none; }
+/* ADD BTN */
+.add-btn{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:11px;border-radius:var(--r);border:1px dashed var(--border2);
+  background:transparent;color:var(--text3);font-size:12px;font-family:var(--font);
+  cursor:pointer;margin-top:8px;transition:all .2s;font-weight:500;
+}
+.add-btn:hover{background:var(--bg2);color:var(--text2);border-color:var(--blue)}
+.add-btn span{font-size:18px;line-height:1}
 
-  /* SPINNER */
-  .spin { animation: spin .7s linear infinite; display: inline-block; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+/* ASSET ROW */
+.asset-list{display:flex;flex-direction:column;gap:6px}
+.arow{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .15s}
+.arow:hover{border-color:var(--border2)}
+.arow-main{display:grid;grid-template-columns:auto 1fr auto auto;gap:8px;align-items:center;padding:11px 12px}
+.arow-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;font-family:var(--mono);cursor:pointer}
+.arow-center{cursor:pointer}
+.arow-name{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.arow-meta{font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px;display:flex;align-items:center;gap:6px}
+.chg-badge{font-size:9px;padding:1px 5px;border-radius:4px;font-family:var(--mono);font-weight:700}
+.chg-pos{background:var(--green2);color:var(--green)}.chg-neg{background:var(--red2);color:var(--red)}
+.arow-right{text-align:right;cursor:pointer}
+.arow-saldo{font-size:13px;font-weight:700;font-family:var(--mono)}
+.arow-rend{font-size:10px;margin-top:2px;font-family:var(--mono)}
+.del-btn{width:30px;height:30px;border-radius:8px;background:var(--red2);border:1px solid #ff4d6d33;color:var(--red);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .15s}
+.del-btn:hover{background:#ff4d6d44}
+.arow-detail{display:none;background:var(--bg1);border-top:1px solid var(--border);padding:12px 14px}
+.arow-detail.open{display:block}
+.drow{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border)}
+.drow:last-child{border-bottom:none}
+.drow span:first-child{font-size:10px;color:var(--text3);font-family:var(--mono)}
+.drow span:last-child{font-size:11px;font-family:var(--mono);font-weight:600}
+.pill{font-size:8px;padding:2px 6px;border-radius:4px;font-weight:700;letter-spacing:.04em;font-family:var(--mono)}
+.p-fii{background:var(--blue2);color:var(--blue);border:1px solid #4a9eff33}
+.p-etf{background:var(--orange2);color:var(--orange);border:1px solid #f59e0b33}
 
-  /* LOADING SKELETON */
-  .skel { background: linear-gradient(90deg,var(--bg2),var(--bg3),var(--bg2)); background-size: 200%; animation: skel 1.2s infinite; border-radius: 6px; height: 14px; }
-  @keyframes skel { 0%{background-position:200%} 100%{background-position:-200%} }
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:200;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--bg1);border:1px solid var(--border2);border-radius:18px 18px 0 0;width:100%;max-width:480px;padding:20px 20px 40px;transform:translateY(100%);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.modal-title{font-size:16px;font-weight:700;letter-spacing:-.3px}
+.modal-close{width:30px;height:30px;border-radius:8px;background:var(--bg3);border:1px solid var(--border2);color:var(--text2);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.field{margin-bottom:14px}
+.field label{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-family:var(--mono);display:block;margin-bottom:6px}
+.field input,.field select{
+  width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;
+  padding:11px 14px;font-size:13px;font-family:var(--mono);color:var(--text);
+  outline:none;transition:border-color .2s;
+  -webkit-appearance:none;appearance:none;
+}
+.field input:focus,.field select:focus{border-color:var(--blue)}
+.field select option{background:var(--bg2)}
+.fields-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.modal-submit{
+  width:100%;padding:13px;border-radius:10px;border:none;
+  background:linear-gradient(135deg,#1a56db,#06d6f0);
+  color:#fff;font-size:14px;font-weight:700;font-family:var(--font);
+  cursor:pointer;letter-spacing:.02em;margin-top:6px;
+  box-shadow:0 0 20px #1a56db44;transition:opacity .15s;
+}
+.modal-submit:hover{opacity:.9}
+.modal-err{font-size:11px;color:var(--red);font-family:var(--mono);margin-top:8px;display:none;text-align:center}
+
+/* CONFIRM MODAL */
+.confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .2s}
+.confirm-overlay.open{opacity:1;pointer-events:all}
+.confirm-box{background:var(--bg2);border:1px solid var(--red);border-radius:14px;padding:24px 20px;width:100%;max-width:320px;text-align:center;transform:scale(.9);transition:transform .2s}
+.confirm-overlay.open .confirm-box{transform:scale(1)}
+.confirm-icon{font-size:32px;margin-bottom:10px}
+.confirm-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.confirm-sub{font-size:12px;color:var(--text2);font-family:var(--mono);margin-bottom:18px}
+.confirm-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cbtn{padding:11px;border-radius:8px;font-size:13px;font-weight:600;font-family:var(--font);cursor:pointer;border:none;transition:opacity .15s}
+.cbtn:hover{opacity:.85}
+.cbtn-cancel{background:var(--bg3);color:var(--text2);border:1px solid var(--border2)}
+.cbtn-confirm{background:var(--red);color:#fff}
+
+/* TOAST */
+.toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-20px);z-index:400;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:10px 18px;font-size:12px;font-family:var(--mono);color:var(--text);white-space:nowrap;opacity:0;transition:all .3s;pointer-events:none;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.success{border-color:var(--green);color:var(--green)}
+.toast.error{border-color:var(--red);color:var(--red)}
+
+/* BOTTOM */
+.bottom{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;background:rgba(6,10,15,0.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:8px 16px 18px;display:flex;justify-content:space-between;align-items:center;z-index:100}
+.upd{font-size:9px;color:var(--text3);font-family:var(--mono);line-height:1.6}
+.upd strong{color:var(--text2);display:block}
+.rbtn{font-size:11px;font-weight:700;font-family:var(--font);background:linear-gradient(135deg,#1a56db,#06d6f0);color:#fff;border:none;border-radius:8px;padding:9px 18px;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 0 16px #1a56db44;transition:opacity .15s,transform .1s}
+.rbtn:active{opacity:.8;transform:scale(.96)}.rbtn:disabled{opacity:.4}
+.spin{animation:spin .6s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.err-bar{background:var(--red2);border:1px solid #ff4d6d33;border-radius:var(--r);padding:8px 12px;font-size:10px;color:var(--red);margin-bottom:10px;display:none;font-family:var(--mono)}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg0)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-top">
-    <div>
-      <div class="header-title">Carteira Inter</div>
-      <div class="header-sub" id="hdr-sub">Jonilson · Goiânia</div>
+<div class="ticker-wrap"><div class="ticker-track" id="ticker"></div></div>
+
+<div class="hdr">
+  <div class="hdr-top">
+    <div class="brand">
+      <div class="brand-logo">JT</div>
+      <div><div class="brand-name">JonilsonTrader</div><div class="brand-sub">INTER · CARTEIRA PESSOAL</div></div>
     </div>
-    <div class="live-badge"><span class="live-dot"></span><span id="live-txt">ao vivo</span></div>
+    <div class="live-pill"><span class="live-dot"></span><span id="live-txt">AO VIVO</span></div>
   </div>
 </div>
 
 <div class="body">
-  <div class="err" id="err-box">⚠ Não foi possível buscar preços ao vivo. Exibindo última cotação salva.</div>
+  <div class="err-bar" id="err-box">⚠ FALHA NA CONEXÃO — Exibindo última cotação salva</div>
 
-  <div class="summary">
-    <div class="scard" style="grid-column:1/-1">
-      <div class="scard-label">Patrimônio total</div>
-      <div class="scard-val big" id="v-patrimonio">R$ —</div>
-      <div class="scard-sub neu" id="v-patrimonio-sub">8 ativos</div>
+  <div class="hero">
+    <div class="hero-label">Patrimônio Total</div>
+    <div class="hero-val"><span class="hero-currency">R$</span><span id="v-pat">—</span></div>
+    <div class="hero-row">
+      <span class="hero-pct" id="v-pct">—</span>
+      <span class="hero-sub" id="v-res-abs">—</span>
     </div>
-    <div class="scard">
-      <div class="scard-label">Total investido</div>
-      <div class="scard-val" id="v-investido">R$ —</div>
-      <div class="scard-sub neu">custo médio</div>
-    </div>
-    <div class="scard">
-      <div class="scard-label">Resultado</div>
-      <div class="scard-val" id="v-resultado">R$ —</div>
-      <div class="scard-sub" id="v-pct">—</div>
-    </div>
-    <div class="scard">
-      <div class="scard-label">Melhor hoje</div>
-      <div class="scard-val" id="v-best" style="font-size:16px">—</div>
-      <div class="scard-sub pos" id="v-best-pct">—</div>
-    </div>
-    <div class="scard">
-      <div class="scard-label">Pior hoje</div>
-      <div class="scard-val" id="v-worst" style="font-size:16px">—</div>
-      <div class="scard-sub neg" id="v-worst-pct">—</div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-l">Investido</div><div class="hstat-v" id="hs-inv">—</div></div>
+      <div class="hstat"><div class="hstat-l">Resultado</div><div class="hstat-v" id="hs-res">—</div></div>
+      <div class="hstat"><div class="hstat-l">Ativos</div><div class="hstat-v" id="hs-qt">—</div></div>
     </div>
   </div>
 
-  <div class="charts">
-    <div class="ccard">
-      <div class="ccard-title">Distribuição</div>
-      <div class="cwrap"><canvas id="cDist"></canvas></div>
-      <div class="leg" id="legDist"></div>
+  <div class="mini-cards">
+    <div class="mc purple">
+      <div class="mc-label">Criptomoedas</div>
+      <div class="mc-val" id="v-cripto-tot">—</div>
+      <div class="mc-sub neu" id="v-cripto-ct">—</div>
     </div>
-    <div class="ccard">
-      <div class="ccard-title">Resultado</div>
-      <div class="cwrap"><canvas id="cBar"></canvas></div>
+    <div class="mc blue">
+      <div class="mc-label">Renda Variável</div>
+      <div class="mc-val" id="v-rv-tot">—</div>
+      <div class="mc-sub neu" id="v-rv-ct">—</div>
     </div>
   </div>
 
-  <div class="sec-hdr">Cripto</div>
-  <div id="list-cripto"></div>
-
-  <div class="sec-hdr">Renda Variável</div>
-  <div id="list-rv"></div>
-</div>
-
-<div class="bottom">
-  <div class="upd-txt" id="upd-txt">Atualizando...</div>
-  <button class="refresh-btn" id="rbtn" onclick="fetchAll()">
-    <span id="rbtn-icon">↻</span> Atualizar
-  </button>
-</div>
-
-<script>
-// ── CARTEIRA ───────────────────────────────────────────────────
-const CRIPTO = [
-  { nome:'HYPE',  id:'hyperliquid',      qtd:0.23727,   custo:68.18,  cor:'#9b87f5' },
-  { nome:'ARB',   id:'arbitrum',         qtd:58.99192,  custo:39.40,  cor:'#E8722A' },
-  { nome:'OP',    id:'optimism',         qtd:39.98194,  custo:29.55,  cor:'#e05555' },
-  { nome:'HBAR',  id:'hedera-hashgraph', qtd:41.71381,  custo:19.70,  cor:'#4a9eff' },
-  { nome:'GALA',  id:'gala',             qtd:536.905,   custo:9.85,   cor:'#2ecc8a' },
-];
-const RV = [
-  { nome:'ALZR11', tipo:'FII', qtd:14, custo:148.12, cor:'#4a9eff',  snap:10.46 },
-  { nome:'CPLG11', tipo:'FII', qtd:4,  custo:45.60,  cor:'#2ecc8a',  snap:11.16 },
-  { nome:'BITI11', tipo:'ETF', qtd:3,  custo:107.73, cor:'#f5a623',  snap:34.97 },
-];
-
-let precos = {};
-let distChart = null, barChart = null;
-let openCard = null;
-
-// ── UTILS ──────────────────────────────────────────────────────
-const R = v => 'R$ ' + Math.abs(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
-const P = (r,c) => c>0 ? ((r/c)*100) : 0;
-const Ps = (r,c) => { const p=P(r,c); return (p>=0?'+':'')+p.toFixed(2).replace('.',',')+'%'; };
-
-// ── FETCH CRIPTO ───────────────────────────────────────────────
-async function fetchCripto() {
-  const ids = CRIPTO.map(a=>a.id).join(',');
-  const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=brl&include_24hr_change=true`,
-    { signal: AbortSignal.timeout(8000) });
-  if (!res.ok) throw new Error('coingecko');
-  const data = await res.json();
-  CRIPTO.forEach(a => {
-    if (data[a.id]) precos[a.nome] = { p: data[a.id].brl, c: data[a.id].brl_24h_change||0 };
-  });
-}
-
-// ── FETCH RV ───────────────────────────────────────────────────
-async function fetchRV() {
-  const syms = RV.map(a=>a.nome+'.SA').join(',');
-  try {
-    const res = await fetch(`https://query1.finance.yahoo.com/v7/finance/quote?symbols=${syms}`,
-      { signal: AbortSignal.timeout(8000) });
-    const data = await res.json();
-    (data?.quoteResponse?.result||[]).forEach(q => {
-      const n = q.symbol.replace('.SA','');
-      precos[n] = { p: q.regularMarketPrice, c: q.regularMarketChangePercent||0 };
-    });
-  } catch {
-    RV.forEach(a => { if(!precos[a.nome]) precos[a.nome] = { p: a.snap, c: 0 }; });
-  }
-}
-
-// ── RENDER CARDS SUMMARY ───────────────────────────────────────
-function renderSummary(todos) {
-  const totalInv  = todos.reduce((s,a)=>s+a.custo,0);
-  const totalSaldo= todos.reduce((s,a)=>s+a.saldo,0);
-  const rend      = totalSaldo - totalInv;
-  const pct       = P(rend,totalInv);
-
-  document.getElementById('v-patrimonio').textContent = R(totalSaldo);
-  document.getElementById('v-patrimonio-sub').textContent = todos.length+' ativos';
-  document.getElementById('v-investido').textContent = R(totalInv);
-  document.getElementById('v-resultado').textContent = (rend>=0?'+':'-')+R(rend);
-  document.getElementById('v-resultado').className = 'scard-val '+(rend>=0?'pos':'neg');
-  const pEl = document.getElementById('v-pct');
-  pEl.textContent = (pct>=0?'+':'')+pct.toFixed(2).replace('.',',')+'%';
-  pEl.className = 'scard-sub '+(pct>=0?'pos':'neg');
-
-  const sorted = [...todos].sort((a,b)=>b.change24h-a.change24h);
-  const best = sorted[0], worst = sorted[sorted.length-1];
-  document.getElementById('v-best').textContent = best.nome;
-  document.getElementById('v-best-pct').textContent = (best.change24h>=0?'+':'')+best.change24h.toFixed(2).replace('.',',')+'%';
-  document.getElementById('v-worst').textContent = worst.nome;
-  document.getElementById('v-worst-pct').textContent = worst.change24h.toFixed(2).replace('.',',')+'%';
-}
-
-// ── RENDER CHARTS ──────────────────────────────────────────────
-function renderCharts(todos) {
-  const grupos = {};
-  todos.forEach(a => { grupos[a.tipo]=(grupos[a.tipo]||0)+a.saldo; });
-  const total = Object.values(grupos).reduce((s,v)=>s+v,0);
-  const dL = Object.keys(grupos), dD = Object.values(grupos);
-  const dC = { Cripto:'#9b87f5', FII:'#4a9eff', ETF:'#f5a623' };
-
-  document.getElementById('legDist').innerHTML = dL.map(l=>
-    `<span class="li"><span class="ld" style="background:${dC[l]}"></span>${l} ${total>0?((grupos[l]/total)*100).toFixed(0):0}%</span>`
-  ).join('');
-
-  if(distChart) distChart.destroy();
-  distChart = new Chart(document.getElementById('cDist'),{
-    type:'doughnut',
-    data:{ labels:dL, datasets:[{data:dD, backgroundColor:dL.map(l=>dC[l]), borderWidth:0, hoverOffset:4}] },
-    options:{ responsive:true, maintainAspectRatio:false, cutout:'70%',
-      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:ctx=>' '+R(ctx.parsed) }}}}
-  });
-
-  const bNomes = todos.map(a=>a.nome);
-  const bRend  = todos.map(a=>parseFloat(a.rend.toFixed(2)));
-  const bCores = bRend.map(v=>v>=0?'#2ecc8a55':'#e0555555');
-  const bBorder= bRend.map(v=>v>=0?'#2ecc8a':'#e05555');
-
-  if(barChart) barChart.destroy();
-  barChart = new Chart(document.getElementById('cBar'),{
-    type:'bar',
-    data:{ labels:bNomes, datasets:[{data:bRend, backgroundColor:bCores, borderColor:bBorder, borderWidth:1}] },
-    options:{
-      indexAxis:'y', responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:ctx=>(ctx.parsed.x>=0?'+':'')+R(ctx.parsed.x) }}},
-      scales:{
-        x:{ grid:{color:'#2a2a2a'}, ticks:{color:'#555',font:{size:8}, callback:v=>(v>=0?'+':'')+v.toFixed(0)} },
-        y:{ grid:{display:false}, ticks:{color:'#888',font:{size:9}} }
-      }
-    }
-  });
-}
-
-// ── RENDER ASSET LIST ──────────────────────────────────────────
-function renderList(ativos, containerId) {
-  const el = document.getElementById(containerId);
-  el.innerHTML = ativos.map((a,i) => {
-    const r = a.rend;
-    const pct = Ps(r, a.custo);
-    const cc = a.change24h>=0?'change-pos':'change-neg';
-    const cs = (a.change24h>=0?'▲ +':'▼ ')+Math.abs(a.change24h).toFixed(2).replace('.',',')+'%';
-    const pillHtml = a.tipo && a.tipo!=='Cripto'
-      ? `<span class="pill ${a.tipo==='FII'?'p-fii':'p-etf'}">${a.tipo}</span> ` : '';
-    return `<div class="acard" id="ac-${containerId}-${i}">
-      <div class="acard-main" onclick="toggleCard('${containerId}',${i})">
-        <div class="acard-left">
-          <div class="aicon" style="background:${a.cor}22;color:${a.cor}">${a.nome.substring(0,2)}</div>
-          <div>
-            <div class="acard-name">${pillHtml}${a.nome}</div>
-            <div class="acard-qtd">${a.qtd} un · <span class="change-badge ${cc}">${cs}</span></div>
-          </div>
-        </div>
-        <div class="acard-right">
-          <div class="acard-saldo">${R(a.saldo)}</div>
-          <div class="acard-rend ${r>=0?'pos':'neg'}">${r>=0?'+':'-'}${R(r)} (${pct})</div>
-        </div>
-      </div>
-      <div class="acard-detail" id="det-${containerId}-${i}">
-        <div class="detail-row"><span>Custo total</span><span>${R(a.custo)}</span></div>
-        <div class="detail-row"><span>Preço médio</span><span>${R(a.custo/a.qtd)}</span></div>
-        <div class="detail-row"><span>Preço atual</span><span>${R(a.precoAtual)}</span></div>
-        <div class="detail-row"><span>Quantidade</span><span>${a.qtd}</span></div>
-        <div class="detail-row"><span>Variação 24h</span><span class="${a.change24h>=0?'pos':'neg'}">${cs}</span></div>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function toggleCard(id, i) {
-  const det = document.getElementById(`det-${id}-${i}`);
-  const key = `${id}-${i}`;
-  if (openCard && openCard !== key) {
-    const [oid, oi] = openCard.split('-').slice(0,2).concat(openCard.split('-').slice(2));
-    // close old
-    const old = document.querySelector('.acard-detail.open');
-    if(old) old.classList.remove('open');
-  }
-  det.classList.toggle('open');
-  openCard = det.classList.contains('open') ? key : null;
-}
-
-// ── MAIN RENDER ────────────────────────────────────────────────
-function renderAll() {
-  const cripto = CRIPTO.map(a => {
-    const p = precos[a.nome];
-    const precoAtual = p ? p.p : a.custo/a.qtd;
-    const saldo = precoAtual * a.qtd;
-    return { ...a, tipo:'Cripto', precoAtual, saldo, rend: saldo-a.custo, change24h: p?.c||0 };
-  });
-  const rv = RV.map(a => {
-    const p = precos[a.nome];
-    const precoAtual = p ? p.p : a.snap;
-    const saldo = precoAtual * a.qtd;
-    return { ...a, precoAtual, saldo, rend: saldo-a.custo, change24h: p?.c||0 };
-  });
-  const todos = [...cripto, ...rv];
-
-  renderSummary(todos);
-  renderCharts(todos);
-  renderList(cripto, 'list-cripto');
-  renderList(rv, 'list-rv');
-
-  document.getElementById('upd-txt').textContent = 'Atualizado: '+new Date().toLocaleTimeString('pt-BR');
-  document.getElementById('hdr-sub').textContent = 'Jonilson · '+new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'short'});
-}
-
-// ── FETCH ALL ──────────────────────────────────────────────────
-async function fetchAll() {
-  const btn = document.getElementById('rbtn');
-  const icon = document.getElementById('rbtn-icon');
-  btn.disabled = true;
-  icon.className = 'spin'; icon.textContent = '↻';
-  document.getElementById('live-txt').textContent = 'atualizando';
-
-  try {
-    await Promise.allSettled([fetchCripto(), fetchRV()]);
-    document.getElementById('err-box').style.display = 'none';
-  } catch {
-    document.getElementById('err-box').style.display = 'block';
-  }
-
-  renderAll();
-  btn.disabled = false;
-  icon.className = ''; icon.textContent = '↻';
-  document.getElementById('live-txt').textContent = 'ao vivo';
-}
-
-// ── INIT ───────────────────────────────────────────────────────
-fetchAll();
-setInterval(fetchAll, 60000);
-</script>
-</body>
-</html>
+  <div class="charts-grid">
+    <div class="cbox">      <div class="cbox-hdr"><div class="cbox-title">Distribuição</div><di
+(Content truncated due to size limit. Use line ranges to read remaining content)
