@@ -1,0 +1,6 @@
+CATÁLOGO JS TÊNIS — FOTOS ORIGINAIS
+
+Envie juntos para o GitHub: index.html, script.js e a pasta fotos_originais/.
+O index.html usa as fotos originais da pasta fotos_originais/.
+O arquivo script.js controla filtros, numeração e botões do WhatsApp.
+Na Vercel, index.html deve ficar na raiz do projeto.
