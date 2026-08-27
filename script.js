@@ -1,6 +1,8 @@
 (() => {
   'use strict';
 
+  const PROMO_PRICE = 'R$ 139,90';
+
   const buttons = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.card[data-brand]');
 
@@ -34,7 +36,7 @@
 
         const brand = card.dataset.brand || '';
         const message = encodeURIComponent(
-          `Olá! Tenho interesse no modelo ${title}, marca ${brand}. Gostaria da numeração ${sizeSelect.value}.`
+          `Olá! Tenho interesse no modelo ${title}, marca ${brand}. Valor promocional: ${PROMO_PRICE}. Gostaria da numeração ${sizeSelect.value}.`
         );
         window.open(`https://wa.me/5562982382639?text=${message}`, '_blank');
       });
