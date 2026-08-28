@@ -5,6 +5,7 @@
 
   const buttons = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.card[data-brand]');
+  const filterCards = document.querySelectorAll('.grid > [data-brand]');
 
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -12,7 +13,7 @@
       button.classList.add('active');
 
       const filter = button.dataset.filter;
-      cards.forEach((card) => {
+      filterCards.forEach((card) => {
         const categories = (card.dataset.category || '').split('|');
         const matches = filter === 'Todas'
           || card.dataset.brand === filter
