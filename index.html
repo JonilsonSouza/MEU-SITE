@@ -26,149 +26,107 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JS Tênis | Tênis Premium a partir de R$139,90 | Goiânia</title>
-<meta name="description" content="Tênis para academia e casual a partir de R$139,90. Entrega em Goiânia e Aparecida. WhatsApp: (62) 9xxxx-xxxx">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
-body{background:#0a0a0a;color:#fff;line-height:1.4}
-.header{background:#111;padding:18px 15px;text-align:center;position:sticky;top:0;z-index:100;border-bottom:2px solid #22c55e}
-.header h1{font-size:22px;letter-spacing:3px;font-weight:900}
-.header .sub{color:#22c55e;font-weight:800;margin-top:4px;font-size:14px}
-.badges{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
-.badge{background:#22c55e;color:#000;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:800}
-.filters{display:flex;gap:8px;padding:12px 15px;overflow-x:auto;background:#161616;position:sticky;top:82px;z-index:90;scrollbar-width:none}
-.filters::-webkit-scrollbar{display:none}
+body{background:#000;color:#fff;line-height:1.4}
+.header{background:#000;padding:20px 15px;text-align:center;position:sticky;top:0;z-index:100;border-bottom:2px solid #d4af37}
+.logo{width:110px;height:110px;border-radius:50%;border:3px solid #d4af37;object-fit:cover;margin:0 auto 10px;display:block;box-shadow:0 0 20px rgba(212,175,55,.4)}
+.header h1{font-size:20px;letter-spacing:2px;color:#d4af37;font-weight:900}
+.sub{color:#22c55e;font-weight:800;margin-top:6px;font-size:14px}
+.badges{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.badge{background:#d4af37;color:#000;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:800}
+.filters{display:flex;gap:8px;padding:12px 15px;overflow-x:auto;background:#111;position:sticky;top:0;z-index:90}
 .fbtn{white-space:nowrap;padding:10px 18px;border-radius:25px;border:1px solid #333;background:#222;color:#fff;cursor:pointer;font-weight:700;font-size:13px}
-.fbtn.active{background:#fff;color:#000;border-color:#fff}
-.section-title{padding:22px 15px 8px;font-size:17px;font-weight:900;display:flex;align-items:center;gap:8px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 10px 10px}
+.fbtn.active{background:#d4af37;color:#000;border-color:#d4af37}
+.section-title{padding:20px 15px 8px;font-size:16px;font-weight:900;color:#d4af37}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 10px 15px}
 @media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
-.card{background:#1a1a1a;border-radius:16px;overflow:hidden;border:1px solid #262626;transition:.2s}
-.card:hover{border-color:#444}
-.card-img{width:100%;height:170px;object-fit:cover;background:#222;display:block}
+.card{background:#111;border-radius:16px;overflow:hidden;border:1px solid #222}
+.card-img{width:100%;height:175px;object-fit:cover;background:#1a1a1a;display:block}
 .card-body{padding:11px}
 .price{color:#22c55e;font-weight:900;font-size:18px}
-.name{font-size:12px;margin:5px 0;height:30px;overflow:hidden;font-weight:600;color:#e5e5e5}
+.name{font-size:12px;margin:5px 0;min-height:30px;font-weight:600;color:#e5e5e5}
 .sizes{font-size:10px;color:#888;margin-bottom:9px}
 .btn{width:100%;background:#25D366;color:#000;border:none;padding:10px;border-radius:10px;font-weight:900;cursor:pointer;font-size:13px}
-.btn:hover{background:#1ebe5b}
-.footer{padding:30px 15px;text-align:center;color:#666;font-size:12px}
-.wa-float{position:fixed;bottom:20px;right:20px;background:#25D366;color:#000;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;z-index:200;box-shadow:0 4px 15px rgba(37,211,102,.4);text-decoration:none}
+.footer{padding:30px 15px;text-align:center;color:#666;font-size:12px;border-top:1px solid #222;margin-top:20px}
+.wa-float{position:fixed;bottom:20px;right:20px;background:#25D366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:200;box-shadow:0 4px 15px rgba(37,211,102,.5);text-decoration:none}
+.wa-float img{width:32px;height:32px}
 </style>
 </head>
 <body>
 <div class="header">
+<img class="logo" src="logo.png" alt="JS Tênis Logo" onerror="this.src='photo281101567588623935.jpeg'">
 <h1>JS TÊNIS GOIÂNIA</h1>
-<div class="sub">🔥 A PARTIR DE R$139,90 • ENTREGA HOJE</div>
+<div class="sub">🔥 A PARTIR DE R$139,90 • ENTREGA HOJE EM GOIÂNIA</div>
 <div class="badges">
 <span class="badge">🏋️ ACADEMIA</span>
 <span class="badge">👟 CASUAL</span>
 <span class="badge">🚚 GOIÂNIA E APARECIDA</span>
-<span class="badge">💳 PIX / CARTÃO</span>
+<span class="badge">💳 PIX 62 98238-2639</span>
 </div>
 </div>
 
 <div class="filters">
-<button class="fbtn active" onclick="filtrar('todos',this)">Todos (30+)</button>
+<button class="fbtn active" onclick="filtrar('todos',this)">Todos</button>
 <button class="fbtn" onclick="filtrar('academia',this)">🏋️ Academia</button>
 <button class="fbtn" onclick="filtrar('casual',this)">👟 Casual</button>
 <button class="fbtn" onclick="filtrar('vendidos',this)">🔥 Mais Vendidos</button>
 </div>
 
-<div id="secao-academia">
-<div class="section-title">🏋️ TÊNIS PRA ACADEMIA - LEVE E CONFORTÁVEL - R$139,90</div>
-<div class="grid" id="grid-academia"></div>
-</div>
-
-<div id="secao-casual">
-<div class="section-title">👟 CASUAL / STREET STYLE</div>
-<div class="grid" id="grid-casual"></div>
-</div>
-
-<div id="secao-vendidos">
-<div class="section-title">🔥 MAIS VENDIDOS DA SEMANA</div>
-<div class="grid" id="grid-vendidos"></div>
-</div>
+<div id="sec-academia"><div class="section-title">🏋️ ACADEMIA - LEVES E CONFORTÁVEIS</div><div class="grid" id="grid-academia"></div></div>
+<div id="sec-casual"><div class="section-title">👟 CASUAL / STREET STYLE</div><div class="grid" id="grid-casual"></div></div>
+<div id="sec-vendidos"><div class="section-title">🔥 MAIS VENDIDOS</div><div class="grid" id="grid-vendidos"></div></div>
 
 <div class="footer">
-JS Tênis Goiânia • Loja Online • Entrega em Goiânia e Aparecida<br>
-WhatsApp: (62) 99848-3536 • Instagram: @jstenis_<br><br>
-<a href="https://wa.me/5562998483536?text=Oi!%20Vi%20o%20catalogo%20https://catalogojs.vercel.app/" style="color:#22c55e">Chamar no WhatsApp</a>
+JS Tênis Goiânia • Loja Online • (62) 98238-2639<br>
+Instagram: @jstenis_ • Catálogo: catalogojs.vercel.app<br>
+Entrega rápida em Goiânia e Aparecida
 </div>
 
-<a class="wa-float" href="https://wa.me/5562998483536?text=Oi!%20Vi%20o%20catalogo%20https://catalogojs.vercel.app/" target="_blank">W</a>
+<a class="wa-float" href="https://wa.me/5562982382639?text=Oi!%20Vi%20o%20cat%C3%A1logo%20https://catalogojs.vercel.app/%20e%20quero%20um%20t%C3%AAnis!" target="_blank">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="black"><path d="M19.05 4.91A9.81 9.81 0 0 0 12.03 2a9.87 9.87 0 0 0-8.5 14.9L2 22l5.25-1.38a9.86 9.86 0 0 0 4.78 1.22h.01a9.87 9.87 0 0 0 6.99-16.93zM12.03 20.15a7.9 7.9 0 0 1-4.02-1.1l-.29-.17-3.12.82.83-3.04-.19-.31a7.9 7.9 0 0 1-1.21-4.21 7.88 7.88 0 0 1 7.88-7.88 7.84 7.84 0 0 1 5.57 2.31 7.86 7.86 0 0 1 2.31 5.57 7.88 7.88 0 0 1-7.88 7.88zM17.1 14.4c-.18-.09-1.06-.52-1.22-.58-.17-.06-.29-.09-.41.09-.12.18-.47.58-.58.7-.11.12-.21.13-.39.05-.18-.09-.75-.28-1.43-.89-.53-.47-.89-1.05-.99-1.23-.1-.18-.01-.28.08-.37.08-.08.18-.21.27-.31.09-.1.12-.18.18-.3.06-.12.03-.22-.02-.31-.05-.09-.41-.99-.56-1.35-.15-.35-.3-.3-.41-.31h-.35c-.12 0-.31.05-.48.22-.17.18-.64.62-.64 1.51s.65 1.75.74 1.87c.09.12 1.28 1.96 3.11 2.74.43.19.77.3 1.04.39.44.14.83.12 1.15.07.35-.05 1.06-.43 1.21-.85.15-.42.15-.78.1-.85-.05-.08-.17-.12-.35-.21z"/></svg>
+</a>
 
 <script>
-const WHATSAPP = "5562998483536"; // seu número do print Amor❤️ - troque se for outro
-
-const produtos = [
-// ACADEMIA - seu foco
-{nome:"Asics Branco/Verde", cat:"academia", tam:"34 ao 43", vendidos:true, img:"imagens/1001181381.jpg"},
-{nome:"Adidas Preto/Vermelho", cat:"academia", tam:"34 ao 43", img:"imagens/1001181399.jpg"},
-{nome:"Adidas Cinza/Azul", cat:"academia", tam:"34 ao 43", img:"imagens/1001181400.jpg"},
-{nome:"Fila Preto", cat:"academia", tam:"34 ao 43", img:"imagens/1001184604.jpg"},
-{nome:"Fila Azul", cat:"academia", tam:"34 ao 43", img:"imagens/1001184605.jpg"},
-{nome:"Nike Esportivo Preto Vermelho", cat:"academia", tam:"38 ao 43", img:"imagens/1001184606.jpg"},
-{nome:"Nike Esportivo Preto Lima", cat:"academia", tam:"38 ao 43", img:"imagens/1001184607.jpg"},
-{nome:"Asics Azul Marinho", cat:"academia", tam:"34 ao 43", img:"imagens/1001184608.jpg"},
-// CASUAL
-{nome:"Nike Air Max Preto", cat:"casual", tam:"39 ao 43", vendidos:true, img:""},
-{nome:"Nike Air Force Branco", cat:"casual", tam:"34 ao 42", vendidos:true, img:""},
-{nome:"Nike Air Force Preto e Branco", cat:"casual", tam:"39 ao 42", vendidos:true, img:""},
-{nome:"Adidas Samba Branco e Preto", cat:"casual", tam:"34 ao 39", vendidos:true, img:""},
-{nome:"Adidas Preto e Branco", cat:"casual", tam:"38 ao 43", vendidos:false, img:""},
-{nome:"Lacoste Slip-on Preto", cat:"casual", tam:"38 ao 43", vendidos:false, img:""},
-{nome:"New Balance Branco e Lima", cat:"casual", tam:"38 ao 42", vendidos:false, img:""},
-{nome:"New Balance Preto", cat:"casual", tam:"34 ao 39", vendidos:false, img:""},
+const WHATSAPP="5562982382639";
+const produtos=[
+{nome:"Adidas Preto/Vermelho - Academia", cat:"academia", tam:"34 ao 43", vendidos:true, img:"1001181381.jpg"},
+{nome:"Asics Branco/Verde - Academia", cat:"academia", tam:"34 ao 43", vendidos:true, img:"1001181399.jpg"},
+{nome:"Adidas Cinza/Azul - Academia", cat:"academia", tam:"34 ao 43", vendidos:false, img:"1001181400.jpg"},
+{nome:"Fila Preto - Academia Leve", cat:"academia", tam:"34 ao 43", vendidos:true, img:"1001184604.jpg"},
+{nome:"Fila Azul - Academia", cat:"academia", tam:"34 ao 43", vendidos:false, img:"1001184605.jpg"},
+{nome:"Nike Esportivo Preto Lima", cat:"academia", tam:"38 ao 43", vendidos:true, img:"1001184606.jpg"},
+{nome:"Nike Esportivo Preto Vermelho", cat:"academia", tam:"38 ao 43", vendidos:true, img:"1001184607.jpg"},
+{nome:"Asics Azul Marinho - Treino", cat:"academia", tam:"34 ao 43", vendidos:false, img:"1001184608.jpg"},
+{nome:"Adidas Verde Militar", cat:"casual", tam:"34 ao 43", vendidos:false, img:"1001184604.jpg"},
+{nome:"Nike Air Max Preto", cat:"casual", tam:"39 ao 43", vendidos:true, img:"1001181381.jpg"},
+{nome:"Nike Air Force Branco", cat:"casual", tam:"34 ao 42", vendidos:true, img:"1001181399.jpg"},
+{nome:"Adidas Samba Branco e Preto", cat:"casual", tam:"34 ao 39", vendidos:true, img:"1001181400.jpg"},
 ];
 
-function cardHTML(p){
-const imgTag = p.img ? `<img class="card-img" src="${p.img}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" alt="${p.nome}"><div style="height:170px;background:linear-gradient(135deg,#1f1f1f,#2a2a2a);display:none;align-items:center;justify-content:center;font-size:40px">👟</div>` : `<div style="height:170px;background:linear-gradient(135deg,#1f1f1f,#2a2a2a);display:flex;align-items:center;justify-content:center;font-size:40px">👟</div>`;
-return `<div class="card" data-cat="${p.cat}" data-vendidos="${p.vendidos}">
-${imgTag}
-<div class="card-body">
-<div class="price">R$ 139,90</div>
-<div class="name">${p.nome}</div>
-<div class="sizes">Tam: ${p.tam}</div>
-<button class="btn" onclick="comprar('${p.nome}')">Chamar no Whats</button>
-</div>
-</div>`;
+function card(p){
+return `<div class="card"><img class="card-img" src="${p.img}" alt="${p.nome}" onerror="this.src='https://via.placeholder.com/300x300/111/d4af37?text=JS+Tenis'"><div class="card-body"><div class="price">R$ 139,90</div><div class="name">${p.nome}</div><div class="sizes">Tam: ${p.tam}</div><button class="btn" onclick="comprar('${p.nome}')">Chamar no Whats</button></div></div>`;
 }
-
-function render(filtro="todos"){
+function render(f="todos"){
 document.getElementById("grid-academia").innerHTML="";
 document.getElementById("grid-casual").innerHTML="";
 document.getElementById("grid-vendidos").innerHTML="";
 produtos.forEach(p=>{
-if(filtro==="academia" && p.cat!=="academia") return;
-if(filtro==="casual" && p.cat!=="casual") return;
-if(filtro==="vendidos" && !p.vendidos) return;
-let gridId = filtro==="todos" ? "grid-"+p.cat : "grid-"+filtro;
-if(filtro==="vendidos") gridId="grid-vendidos";
-if(filtro==="todos" && p.vendidos){
-document.getElementById("grid-vendidos").innerHTML+=cardHTML(p);
-}
-document.getElementById(gridId).innerHTML+=cardHTML(p);
+if(f==="academia" && p.cat!=="academia") return;
+if(f==="casual" && p.cat!=="casual") return;
+if(f==="vendidos" && !p.vendidos) return;
+let gid=f==="todos" ? "grid-"+p.cat : "grid-"+f;
+if(f==="vendidos") gid="grid-vendidos";
+document.getElementById(gid).innerHTML+=card(p);
+if(f==="todos" && p.vendidos) document.getElementById("grid-vendidos").innerHTML+=card(p);
 });
-// esconder seções vazias
-document.getElementById("secao-academia").style.display = (filtro==="todos" || filtro==="academia") ? "block" : "none";
-document.getElementById("secao-casual").style.display = (filtro==="todos" || filtro==="casual") ? "block" : "none";
-document.getElementById("secao-vendidos").style.display = (filtro==="todos" || filtro==="vendidos") ? "block" : "none";
-if(filtro==="todos"){
-document.getElementById("secao-vendidos").style.display="block";
+document.getElementById("sec-academia").style.display=(f==="todos"||f==="academia")?"block":"none";
+document.getElementById("sec-casual").style.display=(f==="todos"||f==="casual")?"block":"none";
+document.getElementById("sec-vendidos").style.display=(f==="todos"||f==="vendidos")?"block":"none";
+if(f==="todos") document.getElementById("sec-vendidos").style.display="block";
 }
-}
-
-function filtrar(cat, btn){
-document.querySelectorAll(".fbtn").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-render(cat);
-}
-
-function comprar(nome){
-const msg = encodeURIComponent(`Oi! Vi o ${nome} por R$139,90 no catálogo https://catalogojs.vercel.app/ - tem no meu tamanho? Meu número é:`);
-window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, "_blank");
-}
-
+function filtrar(c,b){document.querySelectorAll(".fbtn").forEach(x=>x.classList.remove("active"));b.classList.add("active");render(c);}
+function comprar(nome){const m=encodeURIComponent(`Oi! Vi o ${nome} por R$139,90 no catálogo https://catalogojs.vercel.app/ - tem no meu tamanho?`);window.open(`https://wa.me/${WHATSAPP}?text=${m}`,"_blank");}
 render("todos");
 </script>
 <script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
